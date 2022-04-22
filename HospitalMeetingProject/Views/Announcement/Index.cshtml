@@ -1,0 +1,57 @@
+﻿@using EntityLayer.Concrete
+@model List<Announcement>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+   <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Duyurular</h4>
+                   
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Duyuru Başlığı</th>
+                          <th>Tarih</th>
+                          <th>Detaya Bak</th>
+                        @if (User.IsInRole("Secretary"))
+                        {
+                          <th>Sil</th>
+                          <th>Düzenle</th>
+                        }
+                       </tr>
+                      </thead>
+                      <tbody>
+                       @foreach (var item in Model)
+                      {
+                    
+
+                            <tr>
+                                <td>@item.AnnouncementID</td>
+                                <td>@item.AnnouncementTopic</td>
+                                <td>@item.Date</td>
+                                <td><a href="/Announcement/AnnouncementDetails/@item.AnnouncementID" class="btn btn-info">Detaya Bak</a></td>
+                                @if(User.IsInRole("Secretary")){
+                                <td><a href="/Announcement/DeleteAnnouncement/@item.AnnouncementID" class="btn btn-danger">Sil</a></td>
+                                <td><a href="/Announcement/UpdateAnnouncement/@item.AnnouncementID" class="btn btn-success">Düzenle</a></td>
+                                }
+
+                            </tr>
+                        
+                      }
+                      </tbody>
+                    </table>
+                    @if(User.IsInRole("Secretary")){
+                    <br/>
+                    <a href="/Announcement/AddAnnouncement/" class="btn btn-primary">Yeni Duyuru Yap</a>
+                    }
+                  </div>
+                </div>
+              </div>
+
+
+

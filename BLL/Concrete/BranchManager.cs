@@ -14,6 +14,16 @@ namespace BLL.Concrete
 
         IBranchDAL branchDAL;
 
+        public BranchManager(IBranchDAL branchDAL)
+        {
+            this.branchDAL = branchDAL;
+        }
+
+        public List<Branch> GetBranchesListWithHospitals()
+        {
+           return branchDAL.GetBranchesListWithHospitals();   
+        }
+
         public void TAdd(Branch t)
         {
             branchDAL.Insert(t);

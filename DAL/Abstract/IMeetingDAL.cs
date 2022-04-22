@@ -10,6 +10,9 @@ namespace DAL.Abstract
     public interface IMeetingDAL : IGenericDAL<Meeting>
     {
 
+        List<Meeting> GetListWithExtras();
 
+       
+        
     }
 }

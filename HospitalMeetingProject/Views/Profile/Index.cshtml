@@ -1,0 +1,17 @@
+﻿@using EntityLayer.Concrete
+@model AppUser
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="card text-dark bg-light mb-xl-auto" @*style="max-width: 18rem;"*@>
+  <div class="card-header">@Model.NameSurname <br/> @Model.UserName <br/> @Model.UserType </div>
+  <div class="card-body" style="text-align:center">
+    <p class="card-text"><img src = "/userimage/@Model.ImageUrl" width="400" height="200" alt="user"></p>
+  </div>
+  <div class="card-footer text-muted">
+    İletişim => @Model.Email
+  </div>
+</div>

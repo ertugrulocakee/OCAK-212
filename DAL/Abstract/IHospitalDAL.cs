@@ -10,6 +10,5 @@ namespace DAL.Abstract
     public interface IHospitalDAL : IGenericDAL<Hospital>
     {
 
-
     }
 }

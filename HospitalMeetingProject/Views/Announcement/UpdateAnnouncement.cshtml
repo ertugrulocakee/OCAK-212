@@ -1,0 +1,43 @@
+﻿@model EntityLayer.Concrete.Announcement
+
+
+@{
+    ViewData["Title"] = "UpdateAnnouncement";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Duyuru Düzenle</h4>
+                 
+  @using (Html.BeginForm("UpdateAnnouncement","Announcement",FormMethod.Post)){
+
+    @Html.HiddenFor(m=>m.AnnouncementID)          
+    <label>Duyuru Başlığı</label>   
+    @Html.TextBoxFor(x=>x.AnnouncementTopic,new {@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.AnnouncementTopic,"",new {@class="text-danger"})
+    <br />
+    <label>Duyuru İçeriği</label>   
+     @Html.TextAreaFor(m => m.AnnouncementContent,8,10,new {@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.AnnouncementContent,"",new {@class="text-danger"})
+    <br />
+   
+ 
+    
+     <button class="btn btn-outline-success">Düzenle</button>                      
+                    
+            
+
+            } 
+
+
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+

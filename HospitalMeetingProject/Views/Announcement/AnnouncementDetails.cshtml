@@ -1,0 +1,19 @@
+﻿@using EntityLayer.Concrete
+@model Announcement
+
+@{
+    ViewData["Title"] = "AnnouncementDetails";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="card text-dark bg-light mb-xl-auto" @*style="max-width: 18rem;"*@>
+  <div class="card-header">@Model.AnnouncementTopic</div>
+  <div class="card-body">
+    <p class="card-text">@Model.AnnouncementContent</p>
+  </div>
+  <div class="card-footer text-muted">
+    @Model.Date
+  </div>
+</div>
+
+

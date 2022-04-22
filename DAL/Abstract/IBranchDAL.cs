@@ -9,5 +9,8 @@ namespace DAL.Abstract
 {
     public interface IBranchDAL : IGenericDAL<Branch>
     {
+
+        List<Branch> GetBranchesListWithHospitals();
+
     }
 }

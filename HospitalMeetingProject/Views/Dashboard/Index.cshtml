@@ -1,0 +1,67 @@
+﻿
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+   <div class="col-md-12 stretch-card grid-margin">
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                  <div class="card-body">                    
+                    <h2 class="mb-5">Hoşgeldiniz @ViewBag.userNameSurname!</h2> 
+                      <h6 class="card-text"> @ViewBag.userName</h6>
+                  </div>
+                </div>
+              </div>
+
+
+  <div class="row">
+              <div class="col-md-6 stretch-card grid-margin">
+                <div class="card bg-gradient-success card-img-holder text-white">
+                  <div class="card-body">
+                @if (User.IsInRole("Admin"))
+                {
+                     <h2 class="mb-5">@ViewBag.hospitalCount</h2>
+                     <h6 class="card-text"> Toplam hastane sayısı</h6>
+                }
+                 @if (User.IsInRole("Secretary"))
+                {
+                     <h2 class="mb-5">@ViewBag.meetingCountSecretary/@ViewBag.meetingCountSecretaryConfirmation</h2>
+                     <h6 class="card-text"> Toplam onaylanmamış randevu sayısı / Toplam onaylanmış randevu sayısı</h6>
+                }
+               @if (User.IsInRole("Doctor"))
+                {
+                     <h2 class="mb-5">@ViewBag.confirmationMeetingDoctor</h2>
+                     <h6 class="card-text"> Toplam onaylanmış randevu sayım</h6>
+                }
+                 @if (User.IsInRole("Patient"))
+                {
+                     <h2 class="mb-5">@ViewBag.confirmationMeetingPatient</h2>
+                     <h6 class="card-text"> Toplam onaylanmış randevu sayım</h6>
+                }
+                   
+                   
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 stretch-card grid-margin">
+                <div class="card bg-gradient-info card-img-holder text-white">
+                  <div class="card-body">
+                @if (User.IsInRole("Admin"))
+                {
+                    <h2 class="mb-5">@ViewBag.secretaryCount</h2>
+                     <h6 class="card-text">Toplam sekreter sayısı</h6>
+                }
+                else{
+                     
+                      <h2 class="mb-5">@ViewBag.announcationCount</h2>
+                       <h6 class="card-text">Toplam Duyuru</h6>
+                    }
+                   
+                  </div>
+                </div>
+              </div>
+
+            </div>
+

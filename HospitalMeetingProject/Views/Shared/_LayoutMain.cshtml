@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Purple Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/PurpleAdmin-Free-Admin-Template-master/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/PurpleAdmin-Free-Admin-Template-master/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/PurpleAdmin-Free-Admin-Template-master/assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="~/PurpleAdmin-Free-Admin-Template-master/assets/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo" href="/Dashboard/Index/"><img src="~/PurpleAdmin-Free-Admin-Template-master/assets/images/logo.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="/Dashboard/Index/"><img src="~/PurpleAdmin-Free-Admin-Template-master/assets/images/logo-mini.svg" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+       
+          <ul class="navbar-nav navbar-nav-right">
+           
+               @await Component.InvokeAsync("ProfileMenu")
+          
+
+            <li class="nav-item d-none d-lg-block full-screen-link">
+              <a class="nav-link">
+                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+              </a>
+            </li>
+         
+              @await Component.InvokeAsync("AnnouncementList")
+
+            @if (User.IsInRole("Doctor"))
+            {
+            <li class="nav-item dropdown">
+             <a class="nav-link count-indicator dropdown-toggle"  href="/Doctor/Index/">
+                <i class="mdi mdi-heart-pulse"></i>
+                <span class="count-symbol bg-danger"></span>
+              </a>     
+            </li>
+            }
+
+           @if(User.IsInRole("Patient")){
+           <li class="nav-item dropdown">
+             <a class="nav-link count-indicator dropdown-toggle"  href="/Meeting/Index/">
+                <i class="mdi mdi-heart-pulse"></i>
+                <span class="count-symbol bg-danger"></span>
+              </a>     
+            </li>
+            }             
+                      
+           @if (User.IsInRole("Secretary"))
+           {
+           <li class="nav-item dropdown">
+             <a class="nav-link count-indicator dropdown-toggle"  href="/Secretary/Index/">
+                <i class="mdi mdi-heart-pulse"></i>
+                <span class="count-symbol bg-danger"></span>
+              </a>     
+            </li>          
+               
+           }
+               
+            <li class="nav-item nav-logout d-none d-lg-block">
+              <a class="nav-link" href="/Login/LogOut/">
+                <i class="mdi mdi-power"></i>
+              </a>
+            </li>
+           
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+        
+           @await Component.InvokeAsync("Profile")
+
+            <li class="nav-item">
+              <a class="nav-link" href="/Dashboard/Index/">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            
+
+          @if (User.IsInRole("Admin"))
+          {
+             <li class="nav-item">
+              <a class="nav-link" href="/Hospital/Index/">
+                <span class="menu-title">Hastaneler</span>
+                <i class="mdi mdi-hospital-building menu-icon"></i>
+              </a>
+            </li>
+          }
+           @if (User.IsInRole("Secretary"))
+          {
+            <li class="nav-item">
+              <a class="nav-link" href="/Branch/Index/">
+                <span class="menu-title">Branşlar</span>
+                <i class="mdi mdi-hospital menu-icon"></i>
+              </a>
+            </li>
+          }
+          @if (User.IsInRole("Patient"))
+            {
+             <li class="nav-item">
+               <a class="nav-link" data-bs-toggle="collapse" href="#meeting" aria-expanded="false" aria-controls="meeting">
+                <span class="menu-title">Randevularım</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-heart-pulse menu-icon"></i>
+              </a>
+              <div class="collapse" id="meeting">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="/Meeting/Index/"> Randevularım </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/Meeting/AddMeeting/"> Randevu Talep Et! </a></li>
+                  
+                </ul>
+              </div>
+            </li>
+            }
+
+           @if (User.IsInRole("Secretary"))
+           {
+
+             <li class="nav-item">
+              <a class="nav-link" href="/Secretary/Index/">
+                <span class="menu-title">Randevular</span>
+                <i class="mdi mdi-heart-pulse menu-icon"></i>
+              </a>
+            </li>
+          
+           }
+           @if (User.IsInRole("Doctor"))
+           {
+
+          <li class="nav-item">
+              <a class="nav-link" href="/Doctor/Index/">
+                <span class="menu-title">Randevularım</span>
+                <i class="mdi mdi-heart-pulse menu-icon"></i>
+              </a>
+            </li>
+
+            }
+          
+            @if (User.IsInRole("Secretary"))
+           {
+
+            <li class="nav-item">
+              <a class="nav-link" href="/AddDoctor/Index/">
+                <span class="menu-title">Doktor Ata</span>
+                <i class="mdi mdi-account-plus menu-icon"></i>
+              </a>
+            </li>
+
+           }
+
+          @if (User.IsInRole("Admin"))
+           {
+            <li class="nav-item">
+              <a class="nav-link" href="/AddSecretary/Index/">
+                <span class="menu-title">Sekreter Ata</span>
+                <i class="mdi mdi-account-plus menu-icon"></i>
+              </a>
+            </li>
+            }
+
+              <li class="nav-item">
+              <a class="nav-link" href="/Profile/Index/">
+                <span class="menu-title">Profil</span>
+                <i class="mdi mdi-account menu-icon"></i>
+              </a>
+            </li>
+
+           @if (!User.IsInRole("Admin"))
+           {
+             <li class="nav-item">
+              <a class="nav-link" href="/Announcement/Index/">
+                <span class="menu-title">Duyurular</span>
+                <i class="mdi mdi-bell menu-icon"></i>
+              </a>
+            </li>
+           }
+      
+         
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#options" aria-expanded="false" aria-controls="options">
+                <span class="menu-title">Ayarlar</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-settings menu-icon"></i>
+              </a>
+              <div class="collapse" id="options">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="/Options/Index/"> Profil Ayarları </a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/Options/PasswordChanger/"> Şifre Ayarı </a></li>
+                  
+                </ul>
+              </div>
+            </li>
+          
+              <li class="nav-item">
+              <a class="nav-link" href="/Login/Logout/">
+                <span class="menu-title">Çıkış Yap</span>
+                <i class="mdi mdi-power menu-icon"></i>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+
+              @RenderBody()
+
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid d-flex justify-content-between">
+              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © Hastane Randevu Sistemi Created by E.O @DateTime.Now.Year</span>
+              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/PurpleAdmin-Free-Admin-Template-master/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="~/PurpleAdmin-Free-Admin-Template-master/assets/js/off-canvas.js"></script>
+    <script src="~/PurpleAdmin-Free-Admin-Template-master/assets/js/hoverable-collapse.js"></script>
+    <script src="~/PurpleAdmin-Free-Admin-Template-master/assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- End custom js for this page -->
+  </body>
+</html>

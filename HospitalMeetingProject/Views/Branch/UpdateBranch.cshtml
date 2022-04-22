@@ -1,0 +1,34 @@
+﻿@model EntityLayer.Concrete.Branch
+
+@{
+    ViewData["Title"] = "UpdateBranch";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Branş Düzenle</h4>
+                 
+                @using (Html.BeginForm("UpdateBranch","Branch",FormMethod.Post)){
+
+                    @Html.HiddenFor(m=>m.BranchID)                
+                    <div class="form-group">
+                      <label>Branş Adı</label>
+                      @Html.TextBoxFor(m=>m.Name,new {@class="form-control"}) 
+                      @Html.ValidationMessageFor(m=>m.Name,"",new {@class="text-danger"})
+                    </div>
+                
+
+                  <button  class="btn btn-success">Düzenle</button>
+            
+
+            }
+
+
+                  </div>
+                </div>
+              </div>
+
+
+

@@ -1,0 +1,36 @@
+﻿@model EntityLayer.Concrete.Hospital
+
+@{
+    ViewData["Title"] = "UpdateHospital";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+  <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Hastane Düzenle</h4>
+                 
+                @using (Html.BeginForm("UpdateHospital","Hospital",FormMethod.Post)){
+
+                                  
+                    @Html.HiddenFor(m=>m.HospitalID)
+
+                    <div class="form-group">
+                      <label>Hastane Adı</label>
+                      @Html.TextBoxFor(m=>m.Name,new {@class="form-control"}) 
+                      @Html.ValidationMessageFor(m=>m.Name,"",new {@class="text-danger"})
+                    </div>
+                
+
+                  <button  class="btn btn-success">Düzenle</button>
+            
+
+            }
+
+
+                  </div>
+                </div>
+              </div>
+
+
+

@@ -9,6 +9,6 @@ namespace BLL.Abstract
 {
     public interface IBranchService : IGenericService<Branch>
     {
-
+        List<Branch> GetBranchesListWithHospitals();
     }
 }

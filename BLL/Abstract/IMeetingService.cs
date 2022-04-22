@@ -9,5 +9,9 @@ namespace BLL.Abstract
 {
     public interface IMeetingService : IGenericService<Meeting>
     {
+
+        List<Meeting> GetMeetingListWithExtras();
+
+   
     }
 }

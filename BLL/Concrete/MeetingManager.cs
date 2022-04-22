@@ -19,6 +19,11 @@ namespace BLL.Concrete
             this.meetingDAL = meetingDAL;
         }
 
+        public List<Meeting> GetMeetingListWithExtras()
+        {
+            return meetingDAL.GetListWithExtras();
+        }
+
         public void TAdd(Meeting t)
         {
              meetingDAL.Insert(t);  

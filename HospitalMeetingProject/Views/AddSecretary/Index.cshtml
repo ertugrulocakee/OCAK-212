@@ -1,0 +1,84 @@
+﻿@model HospitalMeetingProject.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert('@ViewBag.Message');
+        };
+    </script>
+}  
+
+
+ <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Sekreter Ekle</h4>
+                 
+                @using (Html.BeginForm("Index","AddSecretary",FormMethod.Post,new { enctype = "multipart/form-data" })){
+
+                                    
+                 
+                                    
+                    <div class="form-group">
+                      <label>Ad-Soyad</label>
+                      @Html.TextBoxFor(m=>m.NameSurname,new {@class="form-control"}) 
+                      @Html.ValidationMessageFor(m=>m.NameSurname,"",new {@class="text-danger"})
+                    </div>
+                    <div class="form-group">
+                      <label>Kullanıcı adı</label>
+                      @Html.TextBoxFor(m=>m.UserName,new {@class="form-control"}) 
+                      @Html.ValidationMessageFor(m=>m.UserName,"",new {@class="text-danger"})
+
+                    </div>
+
+                      <div class="form-group">
+                      <label>Şifre</label>
+                      @Html.PasswordFor(m=>m.Password,new {@class="form-control"}) 
+                      @Html.ValidationMessageFor(m=>m.Password,"",new {@class="text-danger"})
+
+                    </div>
+
+                      <div class="form-group">
+                      <label>Tekrar Şifre</label>
+                      @Html.PasswordFor(m=>m.ConfirmPassword,new {@class="form-control"}) 
+                      @Html.ValidationMessageFor(m=>m.ConfirmPassword,"",new {@class="text-danger"})
+
+                    </div>
+                    
+                      <div class="form-group">
+                      <label>E-posta</label>
+                      @Html.TextBoxFor(m=>m.Mail,new {@class="form-control"}) 
+                      @Html.ValidationMessageFor(m=>m.Mail,"",new {@class="text-danger"})
+
+                    </div>
+
+                   <div class="form-group">
+                      <label>Hastane</label>
+                      @Html.DropDownListFor(m=>m.Hospital,(List<SelectListItem>) ViewBag.Hospital ,new {@class="form-control"})                      
+                    </div>
+                
+                                     
+                    <div class="form-group">
+                      <label>Profil Resimini Seç</label>
+                       @Html.TextBoxFor(m => m.Picture, new { type = "file" })
+                       @Html.ValidationMessageFor(m => m.Picture,"",new {@class="text-danger"})
+            
+                    </div>
+             
+
+                      <button  class="btn btn-success">Oluştur</button>  
+            
+
+                 }
+
+
+                  </div>
+                </div>
+              </div>
+

@@ -19,24 +19,32 @@ namespace DAL.Migrations
                 .HasAnnotation("ProductVersion", "5.0.16")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("EntityLayer.Concrete.Admin", b =>
+            modelBuilder.Entity("EntityLayer.Concrete.Announcement", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("AnnouncementID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("appUserId")
-                        .HasColumnType("int");
+                    b.Property<string>("AnnouncementContent")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
-                    b.Property<bool>("status")
-                        .HasColumnType("bit");
+                    b.Property<string>("AnnouncementTopic")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
-                    b.HasKey("id");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
-                    b.HasIndex("appUserId");
+                    b.Property<string>("Hospital")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Admins");
+                    b.HasKey("AnnouncementID");
+
+                    b.ToTable("Announcements");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.AppRole", b =>
@@ -78,6 +86,9 @@ namespace DAL.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Branch")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -89,11 +100,20 @@ namespace DAL.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Hospital")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NameSurname")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -122,10 +142,7 @@ namespace DAL.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("imageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("nameSurname")
+                    b.Property<string>("UserType")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -143,174 +160,81 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Branch", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("BranchID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("hospitalid")
+                    b.Property<int>("HospitalID")
                         .HasColumnType("int");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("status")
+                    b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("id");
+                    b.HasKey("BranchID");
 
-                    b.HasIndex("hospitalid");
+                    b.HasIndex("HospitalID");
 
                     b.ToTable("Branches");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Doctor", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("age")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("appUserId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("branchid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("gender")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("hospitalid")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("appUserId");
-
-                    b.HasIndex("branchid");
-
-                    b.HasIndex("hospitalid");
-
-                    b.ToTable("Doctors");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.Hospital", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("HospitalID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("status")
+                    b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("id");
+                    b.HasKey("HospitalID");
 
                     b.ToTable("Hospitals");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Meeting", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("MeetingID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("confirmation")
+                    b.Property<bool>("Confirmation")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("date")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("doctorid")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("hospitalid")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("patientid")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("doctorid");
-
-                    b.HasIndex("hospitalid");
-
-                    b.HasIndex("patientid");
-
-                    b.ToTable("Meetings");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Patient", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("age")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("appUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("gender")
+                    b.Property<string>("DoctorName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("hospitalid")
+                    b.Property<string>("DoktorUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("HospitalID")
                         .HasColumnType("int");
 
-                    b.Property<bool>("status")
+                    b.Property<string>("PatientName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PatientUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("id");
+                    b.HasKey("MeetingID");
 
-                    b.HasIndex("appUserId");
+                    b.HasIndex("HospitalID");
 
-                    b.HasIndex("hospitalid");
-
-                    b.ToTable("Patients");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Secretary", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("age")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("appUserId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("hospitalid")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("appUserId");
-
-                    b.HasIndex("hospitalid");
-
-                    b.ToTable("Secretaries");
+                    b.ToTable("Meetings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -414,94 +338,26 @@ namespace DAL.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Admin", b =>
-                {
-                    b.HasOne("EntityLayer.Concrete.AppUser", "appUser")
-                        .WithMany()
-                        .HasForeignKey("appUserId");
-
-                    b.Navigation("appUser");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.Branch", b =>
                 {
-                    b.HasOne("EntityLayer.Concrete.Hospital", "hospital")
+                    b.HasOne("EntityLayer.Concrete.Hospital", "Hospital")
                         .WithMany("Branches")
-                        .HasForeignKey("hospitalid");
+                        .HasForeignKey("HospitalID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("hospital");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Doctor", b =>
-                {
-                    b.HasOne("EntityLayer.Concrete.AppUser", "appUser")
-                        .WithMany()
-                        .HasForeignKey("appUserId");
-
-                    b.HasOne("EntityLayer.Concrete.Branch", "branch")
-                        .WithMany("Doctors")
-                        .HasForeignKey("branchid");
-
-                    b.HasOne("EntityLayer.Concrete.Hospital", "hospital")
-                        .WithMany("Doctors")
-                        .HasForeignKey("hospitalid");
-
-                    b.Navigation("appUser");
-
-                    b.Navigation("branch");
-
-                    b.Navigation("hospital");
+                    b.Navigation("Hospital");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Meeting", b =>
                 {
-                    b.HasOne("EntityLayer.Concrete.Doctor", "doctor")
+                    b.HasOne("EntityLayer.Concrete.Hospital", "Hospital")
                         .WithMany("Meetings")
-                        .HasForeignKey("doctorid");
+                        .HasForeignKey("HospitalID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("EntityLayer.Concrete.Hospital", "hospital")
-                        .WithMany("Meetings")
-                        .HasForeignKey("hospitalid");
-
-                    b.HasOne("EntityLayer.Concrete.Patient", "patient")
-                        .WithMany("Meetings")
-                        .HasForeignKey("patientid");
-
-                    b.Navigation("doctor");
-
-                    b.Navigation("hospital");
-
-                    b.Navigation("patient");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Patient", b =>
-                {
-                    b.HasOne("EntityLayer.Concrete.AppUser", "appUser")
-                        .WithMany()
-                        .HasForeignKey("appUserId");
-
-                    b.HasOne("EntityLayer.Concrete.Hospital", "hospital")
-                        .WithMany("Patients")
-                        .HasForeignKey("hospitalid");
-
-                    b.Navigation("appUser");
-
-                    b.Navigation("hospital");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Secretary", b =>
-                {
-                    b.HasOne("EntityLayer.Concrete.AppUser", "appUser")
-                        .WithMany()
-                        .HasForeignKey("appUserId");
-
-                    b.HasOne("EntityLayer.Concrete.Hospital", "hospital")
-                        .WithMany("Secretaries")
-                        .HasForeignKey("hospitalid");
-
-                    b.Navigation("appUser");
-
-                    b.Navigation("hospital");
+                    b.Navigation("Hospital");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -555,31 +411,10 @@ namespace DAL.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Branch", b =>
-                {
-                    b.Navigation("Doctors");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Doctor", b =>
-                {
-                    b.Navigation("Meetings");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.Hospital", b =>
                 {
                     b.Navigation("Branches");
 
-                    b.Navigation("Doctors");
-
-                    b.Navigation("Meetings");
-
-                    b.Navigation("Patients");
-
-                    b.Navigation("Secretaries");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Patient", b =>
-                {
                     b.Navigation("Meetings");
                 });
 #pragma warning restore 612, 618

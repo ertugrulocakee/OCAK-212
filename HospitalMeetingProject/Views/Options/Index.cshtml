@@ -1,0 +1,64 @@
+﻿@model HospitalMeetingProject.Models.UserEditViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert('@ViewBag.Message');
+        };
+    </script>
+}
+
+
+<div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Profil Düzenle</h4>
+                 
+                @using (Html.BeginForm("Index","Options",FormMethod.Post, new{ enctype = "multipart/form-data" })){
+
+                                    
+                    <div class="form-group">
+                      <label>Ad-Soyad</label>
+                      @Html.TextBoxFor(m=>m.NameSurname,new {@class="form-control"}) 
+                      @Html.ValidationMessageFor(m=>m.NameSurname,"",new {@class="text-danger"})
+                    </div>
+                
+                    <div class="form-group">
+                      <label>Kullanıcı Adı</label>
+                      @Html.TextBoxFor(m=>m.UserName,new {@class="form-control"}) 
+                      @Html.ValidationMessageFor(m=>m.UserName,"",new {@class="text-danger"})
+                    </div>
+                
+
+                       <div class="form-group">
+                      <label>E-posta</label>
+                      @Html.TextBoxFor(m=>m.Mail,new {@class="form-control"}) 
+                      @Html.ValidationMessageFor(m=>m.Mail,"",new {@class="text-danger"})
+                    </div>
+
+
+                      <div class="form-group">
+                      <label>Resim Seç</label>
+                      @Html.TextBoxFor(m=>m.Picture,new { type = "file" }) 
+                      @Html.ValidationMessageFor(m=>m.Picture,"",new {@class="text-danger"})
+                    </div>
+
+                  <button  class="btn btn-success">Güncelle</button>
+            
+
+            }
+
+
+                  </div>
+                </div>
+              </div>
+
+
+
+
