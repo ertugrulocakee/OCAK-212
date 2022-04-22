@@ -34,13 +34,7 @@ namespace DAL.Concrete
 
         public DbSet<Announcement> Announcements { get; set; }
 
-        //public DbSet <Doctor> Doctors { get; set; } 
-
-        //public DbSet<Secretary> Secretaries { get; set; }    
-
-        // public DbSet <Admin> Admins { get; set; }  
-
-        //public DbSet<Patient> Patients { get; set; }
+   
 
 
     }

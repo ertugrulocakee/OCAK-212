@@ -7,11 +7,28 @@
 }
 
 <div class="card text-dark bg-light mb-xl-auto" @*style="max-width: 18rem;"*@>
-  <div class="card-header">@Model.NameSurname <br/> @Model.UserName <br/> @Model.UserType </div>
+  <div class="card-header"> <span class="text-secondary text-medium">@Model.NameSurname</span> <br/> <span class="text-secondary text-medium">@Model.UserName</span><br/> 
+           @if (Model.UserType == "Doctor")
+            {
+                <span class="text-secondary text-small">Doktor</span>
+            }
+            @if(Model.UserType == "Patient")
+            {
+                <span class="text-secondary text-small">Hasta</span>
+            }
+            @if(Model.UserType == "Secretary")
+            {
+                 <span class="text-secondary text-small">Sekreter</span>
+            }
+            @if(Model.UserType == "Admin")
+            {
+                 <span class="text-secondary text-small">Yönetici</span>
+            }
+       </div>
   <div class="card-body" style="text-align:center">
     <p class="card-text"><img src = "/userimage/@Model.ImageUrl" width="400" height="200" alt="user"></p>
   </div>
   <div class="card-footer text-muted">
-    İletişim => @Model.Email
+    <span class="text-secondary text-medium">@Model.Email</span>
   </div>
 </div>

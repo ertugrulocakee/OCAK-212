@@ -10,7 +10,22 @@
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
                   <span class="font-weight-bold mb-2">@Model.NameSurname</span>
-                  <span class="text-secondary text-small">@Model.UserType</span>
+            @if (Model.UserType == "Doctor")
+            {
+                <span class="text-secondary text-small">Doktor</span>
+            }
+            @if(Model.UserType == "Patient")
+            {
+                <span class="text-secondary text-small">Hasta</span>
+            }
+            @if(Model.UserType == "Secretary")
+            {
+                 <span class="text-secondary text-small">Sekreter</span>
+            }
+            @if(Model.UserType == "Admin")
+            {
+                 <span class="text-secondary text-small">Yönetici</span>
+            }
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
