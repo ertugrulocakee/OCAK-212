@@ -10,3 +10,15 @@
 * IDENTITY
 * ENTITY FRAMEWORK CORE 5.0 (CodeFirst Yaklaşımı ile)
 * C# Programlama Dili
+
+
+Güncelleme planlaması :
+
+05.05.2022
+
+-> Ana Panel eklenecek. Randevu yapmak isteyen hasta ana panel üzerinden randevu otomasyon sistemine yönlendirilecek.
+-> Ana Panel tanıtım ve iletişim için kullanılacak.
+-> Ana Panel işlemleri yeni bir Mvc Area üzerinde yapılacak.
+-> Ana Panelin İletişim kısmında AJAX & JQuery işlemleri uygulanacak.
+
+Güncelleme kısa zaman içinde tamamlanacak.
