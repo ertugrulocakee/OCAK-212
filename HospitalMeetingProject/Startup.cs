@@ -45,6 +45,7 @@ namespace HospitalMeetingProject
 
 
             services.AddMvc();
+                    
 
 
             services.ConfigureApplicationCookie(options =>
@@ -91,6 +92,16 @@ namespace HospitalMeetingProject
                     name: "default",
                     pattern: "{controller=Login}/{action=Index}/{id?}");
             });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+            });
+
+
         }
     }
 }

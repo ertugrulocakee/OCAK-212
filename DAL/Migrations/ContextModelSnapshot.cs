@@ -181,6 +181,57 @@ namespace DAL.Migrations
                     b.ToTable("Branches");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Contact", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Contacts");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.ContactInfo", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("address")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("phone")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("ContactInfos");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Hospital", b =>
                 {
                     b.Property<int>("HospitalID")
@@ -235,6 +286,29 @@ namespace DAL.Migrations
                     b.HasIndex("HospitalID");
 
                     b.ToTable("Meetings");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Testimonial", b =>
+                {
+                    b.Property<int>("testimonialID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("testimonialID");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Testimonials");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -358,6 +432,17 @@ namespace DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Hospital");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Testimonial", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

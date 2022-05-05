@@ -34,7 +34,12 @@ namespace DAL.Concrete
 
         public DbSet<Announcement> Announcements { get; set; }
 
-   
+        public DbSet<Contact> Contacts { get; set; }
+
+        public DbSet<ContactInfo> ContactInfos { get; set; }    
+
+        public DbSet<Testimonial> Testimonials { get; set; }    
+
 
 
     }

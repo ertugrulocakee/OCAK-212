@@ -1,0 +1,29 @@
+﻿ @using EntityLayer.Concrete
+ @model ContactInfo
+
+<div class="col-lg-6">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="info-box">
+                <i class="bx bx-map"></i>
+                <h3>Merkez Yerleşkesi Adresi</h3>
+                <p>@Model.address</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="info-box mt-4">
+                <i class="bx bx-envelope"></i>
+                <h3>İletişim E-posta Adresi</h3>
+                <p>@Model.email</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="info-box mt-4">
+                <i class="bx bx-phone-call"></i>
+                <h3>İletişim Telefon Numarası</h3>
+                <p>@Model.phone</p>
+            </div>
+        </div>
+    </div>
+</div>
