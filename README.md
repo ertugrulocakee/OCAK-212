@@ -7,6 +7,7 @@
 * ASPNET MVC CORE 5.0 
 * MSSQL (Tetikleyiciler-İlişkisel veri tabanı-Jobs)
 * BOOTSTRAP
+* AJAX & jQuery
 * IDENTITY
 * ENTITY FRAMEWORK CORE 5.0 (CodeFirst Yaklaşımı ile)
 * C# Programlama Dili
