@@ -54,7 +54,7 @@ namespace HospitalMeetingProject
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
                 options.AccessDeniedPath = "/Error/Error401/";
-                options.LoginPath = "/Login/Index/";
+                options.LoginPath = "/Login/StartPage/";
 
             });
 
@@ -86,12 +86,16 @@ namespace HospitalMeetingProject
             app.UseAuthentication();
             app.UseAuthorization();
 
+       
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Login}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=StartPage}/{id?}");
             });
+
+
 
             app.UseEndpoints(endpoints =>
             {
@@ -100,7 +104,6 @@ namespace HospitalMeetingProject
                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                 );
             });
-
 
         }
     }

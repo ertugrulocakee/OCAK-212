@@ -58,5 +58,13 @@ namespace HospitalMeetingProject.Controllers
 
         }
 
+
+        public IActionResult StartPage()
+        {
+
+            return View();
+
+        }
+
     }
 }
