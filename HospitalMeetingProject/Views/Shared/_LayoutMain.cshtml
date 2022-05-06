@@ -139,6 +139,14 @@
             }
 
              @if (User.IsInRole("Admin")){
+            
+          <li class="nav-item">
+              <a class="nav-link" href="/Message/Index/">
+                <span class="menu-title">Gelen İletişim Mesajları</span>
+                <i class="mdi mdi-arrow-down menu-icon"></i>
+              </a>
+            </li>
+
 
            <li class="nav-item">
               <a class="nav-link" href="/ContactInfo/Index/">
@@ -153,6 +161,8 @@
                 <i class="mdi mdi-account-box-outline menu-icon"></i>
               </a>
             </li>
+
+
 
              }
 

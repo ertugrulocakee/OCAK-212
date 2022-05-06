@@ -1,0 +1,23 @@
+﻿@using EntityLayer.Concrete
+@model Contact
+
+@{
+    ViewData["Title"] = "MessageDetail";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="card text-dark bg-light mb-xl-auto" @*style="max-width: 18rem;"*@>
+  <div class="card-header"> <span class="text-secondary text-medium">@Model.Name</span><br/> 
+        
+      <span class="text-secondary text-small">@Model.Subject</span>
+           
+       </div>
+  <div class="card-body">
+    <p class="card-text">@Model.Message</p>
+  </div>
+  <div class="card-footer text-muted">
+    <span class="text-secondary text-medium">@Model.Email</span>
+  </div>
+</div>
+
+
