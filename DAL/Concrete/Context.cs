@@ -42,5 +42,8 @@ namespace DAL.Concrete
 
         public DbSet<About> Abouts { get; set; }
 
+        public DbSet<HospitalInfo> HospitalInfos { get; set; }  
+
+
     }
 }

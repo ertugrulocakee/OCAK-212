@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete
+@model List<HospitalInfo>
+
+
+      <!-- ======= Hospital Section ======= -->
+    <section id="hospitals" class="services services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Hastanelerimiz</h2>
+        </div>
+
+        <div class="row">
+
+            @foreach(var item in Model){
+
+
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon"><img src="/hospitalimage/@item.hospitalImageUrl" alt="hospital" class="img-fluid" /></div>
+            <h4 class="title">@item.Hospital.Name</h4>
+            <p class="description">@item.description</p>
+          </div>
+
+            }
+        </div>
+
+      </div>
+    </section><!-- End Hospital Section -->
