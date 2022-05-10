@@ -13,3 +13,4 @@
 * C# Programlama Dili 
 * .NET
 
+Proje/Çalışma katmanlı mimaride geliştirildi. SOLID Prensiplerine dikkat edildi. MVC Yazılım Tasarım Deseni kullanıldı.
