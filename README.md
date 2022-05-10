@@ -29,7 +29,7 @@ Randevu Otomasyon Giriş Sayfası
 
 ![OCAK212RandevuKayit](https://user-images.githubusercontent.com/83928393/167678654-145bd31f-ed50-498f-913c-46c5c4a3c3fe.png)
 
-Randevu Otomasyon Sistemi Kullanıcı Sayfası( Görsel hasta profilindendir. Ayrıca sekreter, doktor ve yöneticinin ayrı sayfaları çalışma içinde mevcuttur.)
+Randevu Otomasyon Sistemi Kullanıcı Sayfası( Görsel hasta profilindendir. Ek olarak sekreter, doktor ve yöneticinin ayrı sayfaları çalışma içinde mevcuttur.)
 
 ![OCAK212KullaniciSayfasi](https://user-images.githubusercontent.com/83928393/167678943-9f2b5f05-285c-43d2-be77-cabab2cdb443.png)
 
