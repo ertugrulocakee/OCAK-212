@@ -15,7 +15,7 @@
 
 Proje/Çalışma katmanlı mimaride geliştirildi. SOLID Prensiplerine dikkat edildi. MVC Yazılım Tasarım Deseni kullanıldı.
 
-PROJE/ÇALIŞMA GÖRSELLERİ
+---PROJE/ÇALIŞMA GÖRSELLERİ---
 
 Giriş Sayfası
 
