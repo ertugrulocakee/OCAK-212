@@ -12,6 +12,10 @@
 * ENTITY FRAMEWORK CORE 5.0 (CodeFirst Yaklaşımı ile)
 * C# Programlama Dili 
 * .NET
+* Repository Design Pattern
+* Fluent Validation
+* Rolleme
+
 
 Proje/Çalışma katmanlı mimaride geliştirildi. SOLID Prensiplerine dikkat edildi. MVC Yazılım Tasarım Deseni kullanıldı.
 
